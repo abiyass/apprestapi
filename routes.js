@@ -7,4 +7,5 @@ module.exports = function (app) {
   app.route("/blog").get(jsonku.tampildatablogall);
   app.route("/blog/:id").get(jsonku.tampildatablogid);
   app.route("/blog/tambahdata").post(jsonku.tambahDataBlog);
+  app.route("/blog/ubahdata").put(jsonku.ubahDataBlog);
 };
