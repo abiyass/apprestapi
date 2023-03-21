@@ -36,3 +36,29 @@ exports.tampildatablogid = function (req, res) {
     }
   );
 };
+
+// tambah data blog
+
+exports.tambahDataBlog = function (req, res) {
+  var slug = req.body.slug;
+  var deskripsi = req.body.deskripsi;
+  var judul = req.body.judul;
+  var isi = req.body.isi;
+  var status = req.body.status;
+  var kata_kunci = req.body.kata_kunci;
+  var gambar = req.body.gambar;
+  var tgl_post = req.body.tgl_post;
+  var viewer = req.body.viewer;
+
+  connection.query(
+    "INSERT INTO blog_tbl (slug,deskripsi,judul,isi,status,kata_kunci,gambar,tgl_post,tgl_buat,viewer) VALUES(?,?,?,?,?,?,?,?,?)",
+    [slug, deskripsi, judul, isi, status, kata_kunci, gambar, tgl_post, viewer],
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        response.ok("Berhasil Menambahkan Data !", res);
+      }
+    }
+  );
+};
