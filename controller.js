@@ -100,3 +100,21 @@ exports.ubahDataBlog = function (req, res) {
     }
   );
 };
+
+// hapus data blog
+
+exports.hapusDataBlog = function (req, res) {
+  var id = req.body.id_blog;
+
+  connection.query(
+    "DELETE FROM blog_tbl WHERE id_blog=?",
+    [id],
+    function (error, rows, field) {
+      if (error) {
+        console.log(error);
+      } else {
+        response.ok("Data berhasil dihapus", res);
+      }
+    }
+  );
+};
