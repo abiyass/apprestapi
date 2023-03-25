@@ -12,10 +12,10 @@ exports.regitrasi = function (req, res) {
     pass_user: md5(req.body.pass_user),
     id_level_user: req.body.id_level_user,
     foto: "user.jpg",
-    aktivasi: 2,
+    aktivasi: 0,
   };
 
-  var query = "SELECT nama_user FROM ?? WHERE ??";
+  var query = "SELECT nama_user FROM ?? WHERE ??=?";
   var table = ["user_tbl", "nama_user", post.nama_user];
 
   query = mysql.format(query, table);
@@ -36,7 +36,7 @@ exports.regitrasi = function (req, res) {
           }
         });
       } else {
-        response.ok("Nama User sudah terdaftar !");
+        response.ok("Nama User sudah terdaftar !", res);
       }
     }
   });
